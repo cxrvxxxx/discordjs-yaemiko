@@ -1,6 +1,18 @@
 {
+  "name": "discordjs-yaemiko",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "deploy": "node src/deploy-commands.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "discord.js": "^14.19.3",
     "dotenv": "^16.5.0"
-  }
+  },
+  "type": "module"
 }
