@@ -1,7 +1,6 @@
-// deploy-commands.js
 import { REST, Routes } from 'discord.js';
 import 'dotenv/config';
-import commands from './commands/index.js';
+import commands from './commands.js';
 
 const { TOKEN, GUILD_ID, CLIENT_ID } = process.env;
 

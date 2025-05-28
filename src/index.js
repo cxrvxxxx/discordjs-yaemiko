@@ -1,16 +1,20 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 import 'dotenv/config';
-import commands from './commands/index.js';
+import commands from './commands.js';
+import { createTables } from './db/createTables.js';
 
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers
     ]
 });
 
 client.commands = commands;
 
-client.once('ready', () => {
+client.once('ready', async () => {
+    await createTables();
+    
     console.log(`Connected as ${client.user?.tag}.`);
 })
 
