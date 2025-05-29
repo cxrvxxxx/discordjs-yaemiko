@@ -9,7 +9,7 @@ export const getLobby = async (db, guildId, channelId) => {
     `, [guildId, channelId]);
 
     if (!row) {
-        return null;
+        return { guildId: null, channelId: null};
     }
 
     return row;

@@ -10,7 +10,7 @@ export const getLobbySettings = async (db, guildId, lobbyId) => {
     `, [guildId, lobbyId]);
 
     if (!row) {
-        return null;
+        return { guildId: null, lobbyId: null, categoryId: null };
     }
 
     return row;

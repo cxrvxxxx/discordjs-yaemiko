@@ -7,7 +7,8 @@ export default async (client) => {
             const channel = oldState.channel;
             const guild = oldState.guild;
 
-            if (!await getLobby(client.db, guild.id, channel.id)) {
+            const lobbyData = await getLobby(client.db, guild.id, channel.id);
+            if (!lobbyData.channelId) {
                 return;
             }
 

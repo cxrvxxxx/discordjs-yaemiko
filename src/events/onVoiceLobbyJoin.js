@@ -10,7 +10,6 @@ export default async (client) => {
             const member = newState.member;
 
             const { categoryId } = await getLobbySettings(client.db, guild.id, channel.id);
-
             if (!categoryId) {
                 return;
             }
