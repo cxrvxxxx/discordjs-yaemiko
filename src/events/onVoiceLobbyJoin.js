@@ -4,7 +4,7 @@ import { addLobby } from '../db/addLobby.js';
 
 export default async (client) => {
     client.on('voiceStateUpdate', async (oldState, newState) => {
-        if (!oldState.channel && newState.channel) {
+        if (newState.channel) {
             const guild = newState.guild;
             const channel = newState.channel;
             const member = newState.member;
