@@ -24,7 +24,7 @@ for (const file of commandFiles) {
 const rest = new REST().setToken(process.env.TOKEN);
 
 try {
-  console.log(`🔄 Refreshing ${commands.length} application (slash) commands...`);
+  console.log(`Refreshing ${commands.length} application (slash) commands...`);
 
   const data = await rest.put(
     Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),

@@ -1,4 +1,3 @@
-import { Collection } from 'discord.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { readdir } from 'fs/promises';
