@@ -1,8 +1,7 @@
-import { getDbConnection } from './getDbConnection.js';
+import { open } from 'sqlite';
+import sqlite3 from 'sqlite3';
 
-export const createTables = async () => {
-    const db = await getDbConnection();
-
+const generateTables = async (db) => {
     await db.exec(`
         CREATE TABLE IF NOT EXISTS TB_LOBBY_SETTINGS (
             FD_GUILD_ID TEXT,
@@ -24,4 +23,13 @@ export const createTables = async () => {
 
         console.log('Tables created.');
     });
+}
+
+export default async (client) => {
+    client.db = await open({
+        filename: './data/appdata.db',
+        driver: sqlite3.Database
+    });
+
+    generateTables(client.db);
 }

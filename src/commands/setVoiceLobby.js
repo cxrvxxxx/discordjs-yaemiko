@@ -1,5 +1,4 @@
 import { SlashCommandBuilder } from "discord.js";
-import { getDbConnection } from '../db/getDbConnection.js';
 import { setLobbySettings } from '../db/setLobbySettings.js';
 
 export const data = new SlashCommandBuilder()
@@ -16,7 +15,7 @@ export const data = new SlashCommandBuilder()
             .setRequired(true)
     )
 
-export const execute = async (interaction) => {
+export const execute = async (client, interaction) => {
     const member = interaction.member;
 
     if (!member.permissions.has('Administrator')) {
@@ -40,8 +39,11 @@ export const execute = async (interaction) => {
         return;
     }
 
-    const db = await getDbConnection();
-    await setLobbySettings(db, GUILD_ID, LOBBY_ID, CATEGORY_ID);
+    await setLobbySettings(client.db, GUILD_ID, LOBBY_ID, CATEGORY_ID);
 
     await interaction.reply(`[**${lobby.name}**] has been set as the lobby for [**${category.name}**].`);
+}
+
+export default (client) => {
+    client.commands.set(data.name, { data, execute });
 }
